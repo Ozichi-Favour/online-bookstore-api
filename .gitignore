@@ -47,5 +47,6 @@ logs/
 ### Windows ###
 Thumbs.db
 
-# Local configuration
-application-local.properties
+# Ignore application config files
+application.properties
+src/main/resources/application.properties
