@@ -40,7 +40,6 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException("Cart is empty");
         }
 
-        // Convert the string payment method to the enum value
         PaymentMethod paymentMethod = checkoutRequest.getPaymentMethod();
         Order order = new Order();
         order.setUser(user);
@@ -48,14 +47,13 @@ public class OrderServiceImpl implements OrderService {
         order.setPaymentMethod(paymentMethod);
         order.setStatus(OrderStatus.PENDING);
 
-        // Create OrderItem instances from CartItems
         for (CartItem cartItem : cartItems) {
             OrderItem orderItem = new OrderItem();
             orderItem.setBook(cartItem.getBook());
             orderItem.setOrder(order);
             orderItem.setQuantity(cartItem.getQuantity());
             orderItem.setPriceAtPurchase(cartItem.getBook().getPrice());
-            order.addItem(orderItem); // Assuming you've added the helper method to Order
+            order.addItem(orderItem);
         }
 
         order.setTotalAmount(calculateTotal(cartItems));
@@ -82,7 +80,6 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(orderId)
                 .orElseThrow(() -> new RuntimeException("Order not found"));
 
-        // Simulate payment processing
         order.setStatus(OrderStatus.PAID);
         Order updatedOrder = orderRepository.save(order);
 
@@ -95,7 +92,6 @@ public class OrderServiceImpl implements OrderService {
                 .sum();
     }
 
-    // Mapper methods
     private OrderResponseDTO mapToOrderResponseDTO(Order order) {
         OrderResponseDTO dto = new OrderResponseDTO();
         dto.setId(order.getId());

@@ -31,7 +31,6 @@ public class Order {
     private OrderStatus status;
 
     private Double totalAmount;
-    // Helper method to add items
     public void addItem(OrderItem item) {
         items.add(item);
         item.setOrder(this);

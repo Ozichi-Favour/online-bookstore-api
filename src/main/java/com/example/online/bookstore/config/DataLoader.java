@@ -16,7 +16,6 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Only load data if the repository is empty
         if (bookRepository.count() == 0) {
             loadSampleBooks();
         }

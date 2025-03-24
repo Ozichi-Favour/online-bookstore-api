@@ -11,7 +11,7 @@ public class OrderResponseDTO {
     private Long userId;
     private List<OrderItemDTO> items;
     private LocalDateTime orderDate;
-    private String paymentMethod;  // Verify this exists
+    private String paymentMethod;
     private String status;
     private Double totalAmount;
 }
