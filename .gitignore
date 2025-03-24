@@ -46,3 +46,6 @@ logs/
 
 ### Windows ###
 Thumbs.db
+
+# Local configuration
+application-local.properties
